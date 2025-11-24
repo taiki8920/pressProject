@@ -192,5 +192,35 @@ def main():
     print("Done")
 
 
+import csv
+from jinja2 import Template
+
+def generate_index():
+    with open("data/persons.csv", newline="", encoding="utf-8") as f:
+        reader = csv.DictReader(f)
+        persons = list(reader)
+
+    template = Template("""
+    <html><body>
+    <h1>人物一覧</h1>
+    <ul>
+    {% for p in persons %}
+      <li><a href="{{p['person_id']}}.html">{{p['name']}}</a></li>
+    {% endfor %}
+    </ul>
+    </body></html>
+    """)
+    html = template.render(persons=persons)
+
+    with open("site/index.html", "w", encoding="utf-8") as f:
+        f.write(html)
+
+
 if __name__ == "__main__":
-    main()
+    import sys
+    # allow generating only the index without running the full main flow
+    if "--index-only" in sys.argv:
+        generate_index()
+    else:
+        main()
+        generate_index()
