@@ -1,0 +1,4 @@
+person_id,name,wikipedia,rss,x_urls
+1,Shinzō Abe,Shinzō_Abe,https://www.jiji.com/rss?f=rss,https://x.com/example/status/111;https://x.com/example/status/112
+2,Yuriko Koike,Yuriko_Koike,https://example.com/feed,https://x.com/example/status/221
+3,Taro Yamada,Taro_Yamada,https://another.example/feed,https://x.com/example/status/331;https://x.com/example/status/332
